@@ -4,7 +4,7 @@
 
 <h2 align="center">A lightweight and powerful control panel for the modern web</h2>
 
-<p align="center"><strong>Latest stable release:</strong> Version 1.8.12 | <a href="https://github.com/hestiacp/hestiacp/blob/release/CHANGELOG.md">View Changelog</a></p>
+<p align="center"><strong>Latest stable release:</strong> Version 1.8.12 | <a href="https://github.com/RSKYS/hestiacp/blob/latest/CHANGELOG.md">View Changelog</a></p>
 
 <p align="center">
 	<a href="https://www.hestiacp.com/">HestiaCP.com</a> |
@@ -70,7 +70,7 @@ ssh root@your.server
 Download the installation script for the latest release:
 
 ```bash
-wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh
+wget https://raw.githubusercontent.com/RSKYS/hestiacp/refs/heads/latest/install/hst-install.sh
 ```
 
 If the download fails due to an SSL validation error, please be sure you've installed the ca-certificate package on your system - you can do this with the following command:
@@ -117,7 +117,7 @@ apt-get upgrade
 
 ## Contributions
 
-If you would like to contribute to the project, please [read our Contribution Guidelines](https://github.com/hestiacp/hestiacp/blob/release/CONTRIBUTING.md) for a brief overview of our development process and standards.
+If you would like to contribute to the project, please [read our Contribution Guidelines](https://github.com/RSKYS/hestiacp/blob/latest/CONTRIBUTING.md) for a brief overview of our development process and standards.
 
 ## Copyright
 
@@ -135,4 +135,4 @@ If you would like to contribute to the project, please [read our Contribution Gu
 
 ## License
 
-Hestia Control Panel is licensed under [GPL v3](https://github.com/hestiacp/hestiacp/blob/release/LICENSE) license, and is based on the [VestaCP](https://vestacp.com/) project.<br>
+Hestia Control Panel is licensed under [GPL v3](https://github.com/RSKYS/hestiacp/blob/latest/LICENSE) license, and is based on the [VestaCP](https://vestacp.com/) project.<br>
