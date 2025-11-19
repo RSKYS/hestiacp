@@ -39,7 +39,7 @@ multiphp_required=("7.3" "7.4" "8.0" "8.1" "8.2" "8.3")
 # Default PHP version if none supplied
 fpm_v="8.3"
 # MariaDB version
-mariadb_v="11.4"
+mariadb_v="11.4.9"
 # Node.js version
 node_v="20"
 
@@ -843,7 +843,7 @@ fi
 # Installing MariaDB repo
 if [ "$mysql" = 'yes' ]; then
 	echo "[ * ] MariaDB $mariadb_v"
-	echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://dlm.mariadb.com/repo/mariadb-server/$mariadb_v/repo/$VERSION $codename main" > $apt/mariadb.list
+	echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://ftp.icm.edu.pl/pub/unix/database/mariadb/mariadb-$mariadb_v/repo/$VERSION $codename main" > $apt/mariadb.list
 	curl -s https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor | tee /usr/share/keyrings/mariadb-keyring.gpg > /dev/null 2>&1
 fi
 
