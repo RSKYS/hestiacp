@@ -33,15 +33,15 @@ VERBOSE='no'
 # Define software versions
 HESTIA_INSTALL_VER='1.9.6'
 # Supported PHP versions
-multiphp_v=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1" "8.2" "8.3" "8.4" "8.5")
+multiphp_v=("7.2" "7.3" "7.4" "8.0" "8.1" "8.2" "8.3" "8.4" "8.5")
 # One of the following PHP versions is required for Roundcube / phpmyadmin
-multiphp_required=("7.3" "7.4" "8.0" "8.1" "8.2" "8.3")
+multiphp_required=("7.3" "7.4" "8.0" "8.1" "8.2" "8.3" "8.4")
 # Default PHP version if none supplied
 fpm_v="8.3"
 # MariaDB version
-mariadb_v="11.4"
+mariadb_v="11.4.12"
 # Node.js version
-node_v="20"
+node_v="24"
 
 # Defining software pack for all distros
 software="acl apache2 apache2-suexec-custom apache2-utils at awstats bc bind9 bsdmainutils bsdutils
@@ -384,7 +384,7 @@ set_default_value 'iptables' 'yes'
 set_default_value 'fail2ban' 'yes'
 set_default_value 'quota' 'no'
 set_default_value 'resourcelimit' 'no'
-set_default_value 'webterminal' 'no'
+set_default_value 'webterminal' 'yes'
 set_default_value 'interactive' 'yes'
 set_default_value 'api' 'yes'
 set_default_port '8083'
@@ -843,8 +843,8 @@ fi
 # Installing MariaDB repo
 if [ "$mysql" = 'yes' ]; then
 	echo "[ * ] MariaDB $mariadb_v"
-	echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://dlm.mariadb.com/repo/mariadb-server/$mariadb_v/repo/$VERSION $codename main" > $apt/mariadb.list
-	curl -s https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor | tee /usr/share/keyrings/mariadb-keyring.gpg > /dev/null 2>&1
+	echo "deb [arch=$ARCH signed-by=/usr/share/keyrings/mariadb-keyring.gpg] https://mirror.mva-n.net/mariadb/mariadb-$mariadb_v/repo/$VERSION $codename main" > $apt/mariadb.list
+	curl -s https://mirror.mva-n.net/mariadb/PublicKey | gpg --dearmor | tee /usr/share/keyrings/mariadb-keyring.gpg > /dev/null 2>&1
 fi
 
 # Installing Mysql8 repo
