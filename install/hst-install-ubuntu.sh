@@ -422,6 +422,26 @@ if [ -d "/usr/local/hestia" ]; then
 	check_result 1 "Hestia install detected. Unable to continue"
 fi
 
+if [ -n "$force" ]; then
+	(
+		deluser hestiamail
+		deluser hestiaweb
+		delgroup hestia-users
+		rm -rf /usr/local/hestia
+
+	) > /dev/null 2>&1
+
+	if [ -d "/home/$username" ]; then
+		find /home -exec chattr -i {} + 2> /dev/null
+
+		(
+			cd /home || exit
+			rm -rf -- "$username"
+
+		) > /dev/null 2>&1
+	fi
+fi
+
 type=$(grep "^ID=" /etc/os-release | cut -f 2 -d '=')
 if [ "$type" = "debian" ]; then
 	check_result 1 "You are running the wrong installer for Debian. Please run hst-install.sh or hst-install-debian.sh instead."
