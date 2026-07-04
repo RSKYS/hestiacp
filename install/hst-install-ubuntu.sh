@@ -385,7 +385,7 @@ set_default_value 'iptables' 'yes'
 set_default_value 'fail2ban' 'yes'
 set_default_value 'quota' 'no'
 set_default_value 'resourcelimit' 'no'
-set_default_value 'webterminal' 'yes'
+set_default_value 'webterminal' 'no'
 set_default_value 'interactive' 'yes'
 set_default_value 'api' 'yes'
 set_default_port '8083'
@@ -418,10 +418,6 @@ if [ "x$(id -u)" != 'x0' ]; then
 	check_result 1 "Script can be run executed only by root"
 fi
 
-if [ -d "/usr/local/hestia" ]; then
-	check_result 1 "Hestia install detected. Unable to continue"
-fi
-
 if [ -n "$force" ]; then
 	(
 		deluser hestiamail
@@ -432,14 +428,17 @@ if [ -n "$force" ]; then
 	) > /dev/null 2>&1
 
 	if [ -d "/home/$username" ]; then
-		find /home -exec chattr -i {} + 2> /dev/null
-
+		find /home \( -type f -o -type d \) -exec chattr -i {} + 2> /dev/null
 		(
-			cd /home || exit
-			rm -rf -- "$username"
+			cd /home
+			rm -rf $username
 
 		) > /dev/null 2>&1
 	fi
+fi
+
+if [ -d "/usr/local/hestia" ]; then
+	check_result 1 "Hestia install detected. Unable to continue"
 fi
 
 type=$(grep "^ID=" /etc/os-release | cut -f 2 -d '=')
